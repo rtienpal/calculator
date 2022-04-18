@@ -77,6 +77,7 @@ function operatorFunc(operator) {
 }
 
 function equalFunc() {
+  if (mainScreen.textContent === "0") return;
   secondVar = mainScreen.textContent;
   sideScreen.textContent = sideScreen.textContent + secondVar + "=";
   firstVar = parseFloat(firstVar);
@@ -106,40 +107,29 @@ function multiplyFunc(firstVar, secondVar) {
   return firstVar * secondVar;
 }
 function divideFunc(firstVar, secondVar) {
-  return firstVar / secondVar;
+  return Math.round((firstVar / secondVar) * 1000) / 1000;
 }
 
-window.addEventListener("keydown", press);
+window.addEventListener("keydown", pressKey);
 
 let buttonsTest = document.querySelectorAll("#one");
 
 console.log(buttonsTest);
 //dataset DOMStringMap {key: '49' }
 
-function press(e) {
-  if (e.keyCode === 49) {
-    buttonDigit(String.fromCharCode(e.keyCode));
-  }
+function pressKey(e) {
+  console.log(e.key);
+  if (e.key >= 0 && e.key) buttonDigit(e.key);
+  if (e.key === ".") decimalDigit();
+  if (e.key === "Enter" || e.key === "=") equalFunc();
+  if (e.key === "Escape") clearFunc();
+  if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/")
+    operatorFunc(convertKeySymbol(e.key));
 }
 
-/*
-    let number = mainScreen.textContent;
-    console.log(number);
-    number = number.slice(0,number.length -1);
-    console.log(number);
-    */
-
-/*
-    console.log(number);
-    number = parseInt(number);
-    console.log(number + number);
-    */
-
-/*
-
-let number = "123.123";
-console.log(number);
-number = parseFloat(number);
-console.log(number);
-console.log(number + number);
-*/
+function convertKeySymbol(key) {
+  if (key === "+") return "addFunc";
+  else if (key === "-") return "subtractFunc";
+  else if (key === "*") return "multiplyFunc";
+  else return "divideFunc";
+}
