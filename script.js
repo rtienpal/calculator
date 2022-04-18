@@ -19,6 +19,7 @@ let decimal = document.querySelector("#decimal");
 let equals = document.querySelector("#equals");
 let firstVar = 0;
 let secondVar = 0;
+let currentOperation = "";
 
 function buttonDigit(digit) {
   if (mainScreen.textContent === "0") {
@@ -29,7 +30,6 @@ function buttonDigit(digit) {
 
 function decimalDigit() {
   if (mainScreen.textContent.includes(".")) {
-    console.log("y");
   } else {
     mainScreen.textContent += ".";
   }
@@ -41,8 +41,6 @@ function clearFunc() {
   mainScreen.textContent = "0";
   sideScreen.textContent = "";
 }
-
-add.style.backgroundColor = "red";
 
 //add.addEventListener("click", operatorFunc);
 
@@ -58,10 +56,44 @@ function deleteFunc() {
 }
 
 function operatorFunc(operator) {
+  if (currentOperation !== "") {
+    firstVar = equalFunc(operator);
+  }
+
+  firstVar = mainScreen.textContent;
+  currentOperation = operator;
   sideScreen.textContent = mainScreen.textContent;
+
   if (operator === "addFunc") {
     sideScreen.textContent += "+";
+  } else if (operator === "subtractFunc") {
+    sideScreen.textContent += "-";
+  } else if (operator === "multiplyFunc") {
+    sideScreen.textContent += "x";
+  } else {
+    sideScreen.textContent += "÷";
   }
+  mainScreen.textContent = "0";
+}
+
+function equalFunc() {
+  secondVar = mainScreen.textContent;
+  sideScreen.textContent = sideScreen.textContent + secondVar + "=";
+  firstVar = parseFloat(firstVar);
+  secondVar = parseFloat(secondVar);
+  if (currentOperation === "addFunc") {
+    mainScreen.textContent = addFunc(firstVar, secondVar);
+  } else if (currentOperation === "subtractFunc") {
+    mainScreen.textContent = subtractFunc(firstVar, secondVar);
+  } else if (currentOperation === "multiplyFunc") {
+    mainScreen.textContent = multiplyFunc(firstVar, secondVar);
+  } else {
+    mainScreen.textContent = divideFunc(firstVar, secondVar);
+  }
+
+  currentOperation = "";
+  firstVar = 0;
+  secondVar = 0;
 }
 
 function addFunc(firstVar, secondVar) {
@@ -77,6 +109,19 @@ function divideFunc(firstVar, secondVar) {
   return firstVar / secondVar;
 }
 
+window.addEventListener("keydown", press);
+
+let buttonsTest = document.querySelectorAll("#one");
+
+console.log(buttonsTest);
+//dataset DOMStringMap {key: '49' }
+
+function press(e) {
+  if (e.keyCode === 49) {
+    buttonDigit(String.fromCharCode(e.keyCode));
+  }
+}
+
 /*
     let number = mainScreen.textContent;
     console.log(number);
@@ -90,8 +135,11 @@ function divideFunc(firstVar, secondVar) {
     console.log(number + number);
     */
 
+/*
+
 let number = "123.123";
 console.log(number);
 number = parseFloat(number);
 console.log(number);
 console.log(number + number);
+*/

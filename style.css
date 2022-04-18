@@ -8,8 +8,6 @@
   --primary-yellow: #fac650;
 }
 
-
-
 body {
   display: flex;
   flex-direction: column;
@@ -42,21 +40,35 @@ body {
   padding: 5px;
   align-items: stretch;
   gap: 10px;
+  border-radius: 5px;
 }
 
-
-#screen, #clear-del, #row-3, #row-4, #row-5, #row-6 {
+#screen,
+#clear-del,
+#row-3,
+#row-4,
+#row-5,
+#row-6 {
   display: flex;
   gap: 10px;
   justify-content: stretch;
-  align-items: stretch;
+  align-items: flex-end;
 }
 
 #screen {
   flex-direction: column;
   border-style: solid;
+  padding: 3px;
 }
- 
+
+#clear {
+  background-color: red;
+}
+
+#equals {
+  background-color: blue;
+}
+
 #footer {
   position: absolute;
   bottom: 0;

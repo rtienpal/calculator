@@ -16,52 +16,51 @@
     <section id="header">Calculator</section>
 
     <section id="main">
-
       <div id="container">
         <div id="screen">
-          <div id="side-screen"></div>
+          <div id="side-screen">0</div>
           <div id="main-screen">0</div>
         </div>
         <div id="clear-del">
-          <button id="clear" onclick="clearFunc()">CLEAR</button>
-          <button id="delete" onclick="deleteFunc()">DELETE</button>
+          <button id="clear" onclick="clearFunc()" data-key="27">CLEAR</button>
+          <button id="delete" onclick="deleteFunc()" data-key="8">DELETE</button>
         </div>
         <div id="row-3">
-          <button id="seven" onclick="buttonDigit('7')">7</button>
-          <button id="eight"onclick="buttonDigit('8')">8</button>
-          <button id="nine"onclick="buttonDigit('9')">9</button>
-          <button id="divide">÷</button>
+          <button id="seven" onclick="buttonDigit('7')" data-key="55">7</button>
+          <button id="eight" onclick="buttonDigit('8')" data-key="56">8</button>
+          <button id="nine" onclick="buttonDigit('9')" data-key="57">9</button>
+          <button id="divide" onclick="operatorFunc('divideFunc')" data-key="193">÷</button>
         </div>
         <div id="row-4">
-          <button id="four"onclick="buttonDigit('4')">4</button>
-          <button id="five"onclick="buttonDigit('5')">5</button>
-          <button id="six"onclick="buttonDigit('6')">6</button>
-          <button id="multiply">x</button>
+          <button id="four" onclick="buttonDigit('4')" data-key="52">4</button>
+          <button id="five" onclick="buttonDigit('5')" data-key="53">5</button>
+          <button id="six" onclick="buttonDigit('6')" data-key="54">6</button>
+          <button id="multiply" onclick="operatorFunc('multiplyFunc')" data-key="56">
+            x
+          </button>
         </div>
         <div id="row-5">
-          <button id="one"onclick="buttonDigit('1')">1</button>
-          <button id="two"onclick="buttonDigit('2')">2</button>
-          <button id="three"onclick="buttonDigit('3')">3</button>
-          <button id="subtract">-</button>
+          <button id="one" onclick="buttonDigit('1')" data-key="49">1</button>
+          <button id="two" onclick="buttonDigit('2')" data-key="50">2</button>
+          <button id="three" onclick="buttonDigit('3')"data-key="51">3</button>
+          <button id="subtract" onclick="operatorFunc('subtractFunc')" data-key="189">
+            -
+          </button>
         </div>
         <div id="row-6">
-          <button id="decimal" onclick="decimalDigit()">.</button>
-          <button id="0"onclick="buttonDigit('0')">0</button>
-          <button id="equals">=</button>
-          <button id="add" onclick="operatorFunc('addFunc')">+</button>
+          <button id="decimal" onclick="decimalDigit()" data-key="190">.</button>
+          <button id="0" onclick="buttonDigit('0')" data-key="48">0</button>
+          <button id="equals" onclick="equalFunc()" data-key="187">=</button>
+          <button id="add" onclick="operatorFunc('addFunc')" data-key="187">+</button>
         </div>
-
-
       </div>
-
-
     </section>
 
     <section id="footer">
-        Copyright © 2022 Rafael Uen
-        <a href="https://github.com/rtienpal/" target="_blank">
-          <i class="fab fa-github"></i
-        ></a>
-      </section>
+      Copyright © 2022 Rafael Uen
+      <a href="https://github.com/rtienpal/" target="_blank">
+        <i class="fab fa-github"></i
+      ></a>
+    </section>
   </body>
 </html>
