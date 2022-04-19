@@ -98,13 +98,13 @@ function equalFunc() {
 }
 
 function addFunc(firstVar, secondVar) {
-  return firstVar + secondVar;
+  return Math.round((firstVar + secondVar) * 1000) / 1000;
 }
 function subtractFunc(firstVar, secondVar) {
-  return firstVar - secondVar;
+  return Math.round((firstVar - secondVar) * 1000) / 1000;
 }
 function multiplyFunc(firstVar, secondVar) {
-  return firstVar * secondVar;
+  return Math.round(firstVar * secondVar * 1000) / 1000;
 }
 function divideFunc(firstVar, secondVar) {
   return Math.round((firstVar / secondVar) * 1000) / 1000;
@@ -123,6 +123,7 @@ function pressKey(e) {
   if (e.key === ".") decimalDigit();
   if (e.key === "Enter" || e.key === "=") equalFunc();
   if (e.key === "Escape") clearFunc();
+  if (e.key === "Backspace") deleteFunc();
   if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/")
     operatorFunc(convertKeySymbol(e.key));
 }
